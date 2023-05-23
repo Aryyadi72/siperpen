@@ -5,55 +5,57 @@
                 <div class="card">
                     <div class="row">
                         <div class="card-body">
-                            <h4 class="card-title">Tambah Data Buku</h4>
+                            <h4 class="card-title">Ubah Data Buku</h4>
                             <hr>
-                            <form class="forms-sample" action="<?php echo base_url('buku/proses_tambah'); ?>" method="post" role="form">
+                            <form class="forms-sample" action="<?php echo base_url('buku/proses_ubah/' . $buku['id_buku']); ?>" method="post" role="form">
+
+                            <input type="hidden"  name="id_buku" class="form-control" id="exampleInputName1" value="<?= $buku['id_buku']; ?>">
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">No Invent</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="No Invent" name="no_invent">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="No Invent" name="no_invent" value="<?= $buku['no_invent']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Pengarang</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Pengarang" name="pengarang">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Pengarang" name="pengarang" value="<?= $buku['pengarang']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Judul</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Judul" name="judul">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Judul" name="judul" value="<?= $buku['judul']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Bahasa</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Bahasa" name="bahasa">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Bahasa" name="bahasa" value="<?= $buku['bahasa']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Harga Satuan</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Harga Satuan" name="harga_satuan">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Harga Satuan" name="harga_satuan" value="<?= $buku['harga_satuan']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Jumlah Buku</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Jumlah Buku" name="jumlah_buku">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Jumlah Buku" name="jumlah_buku" value="<?= $buku['jumlah_buku']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Penerbit</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Penerbit" name="penerbit">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Penerbit" name="penerbit" value="<?= $buku['penerbit']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Keterangan</label>
-                                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="keterangan"></textarea>
+                                        <input type="text" class="form-control" id="exampleInputName1" name="keterangan" value="<?= $buku['keterangan']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleSelectGender">Asal Buku</label>
                                         <select class="form-control" id="exampleSelectGender" name="id_asal_buku">
                                             <option selected disabled>Pilih Asal Buku</option>
-                                            <option value="1">Perpus Daerah</option>
+                                            <option value="1" <?php if ($buku['id_asal_buku'] == "1") echo "selected"; ?>>Perpus Daerah</option>
                                         </select>
                                 </div>
 
@@ -61,7 +63,7 @@
                                     <label for="exampleSelectGender">Jenis Buku</label>
                                         <select class="form-control" id="exampleSelectGender" name="id_jenis_buku">
                                             <option selected disabled>Pilih Jenis Buku</option>
-                                            <option value="1">Buku Bacaan</option>
+                                            <option value="1" <?php if ($buku['id_asal_buku'] == "1") echo "selected"; ?>>Buku Bacaan</option>
                                         </select>
                                 </div>
                                 

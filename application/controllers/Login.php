@@ -7,4 +7,9 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('petugas/login/v_login');
 	}
+
+	public function login_santri()
+	{
+		$this->load->view('santri/login/v_login_santri');
+	}
 }

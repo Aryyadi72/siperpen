@@ -11,4 +11,13 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard');
 		$this->load->view('petugas/templates/footer');
 	}
+
+	public function dash_santri()
+	{
+		$this->load->view('santri/templates/header');
+		$this->load->view('santri/templates/navbar');
+		$this->load->view('santri/templates/sidebar');
+		$this->load->view('santri/dashboard/dashboard_santri');
+		$this->load->view('santri/templates/footer');
+	}
 }

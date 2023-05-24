@@ -121,5 +121,29 @@ class Buku extends CI_Controller {
 		$this->M_buku->hapus($id_buku);
         // $this->session->set_flashdata('sukses', 'Data Dengan ID ' . $id_user . ' berhasil dihapus.');
         redirect(base_url('buku'));
-    }	
+    }
+	
+	public function buku_santri()
+	{
+		$data['buku'] = $this->M_buku->tampil_jenis()->result();
+		$title['title'] = "Data Buku - SIPERPEN";
+
+		$this->load->view('santri/templates/header', $title);
+		$this->load->view('santri/templates/navbar');
+		$this->load->view('santri/templates/sidebar');
+		$this->load->view('santri/buku/v_buku_santri', $data);
+		$this->load->view('santri/templates/footer');
+	}
+
+	public function detail_buku($id)
+	{
+		$data['buku'] 	= $this->M_buku->byid($id);
+		$title['title'] 	= "Detail Buku - SPASI";
+
+		$this->load->view('santri/templates/header', $data);
+		$this->load->view('santri/templates/navbar');
+		$this->load->view('santri/templates/sidebar');
+		$this->load->view('petugas/buku/v_detail_buku', $data);
+		$this->load->view('santri/templates/footer');
+	}
 }

@@ -105,7 +105,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h4>KlassyCafe</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="<?= base_url('login')?>">Make A Reservation</a>
+                                <a href="<?= base_url('login/login_santri')?>">Make A Reservation</a>
                             </div>
                         </div>
                     </div>

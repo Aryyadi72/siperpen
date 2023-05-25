@@ -16,5 +16,16 @@
         {
             return $this->db->get_where('peminjaman', ['id_peminjaman' => $id])->row_array();
         }
+
+        public function show_data()
+        {
+            $this->db->select('*');
+            $this->db->from('peminjaman');
+            $this->db->join('buku','buku.id_buku = peminjaman.id_buku');
+            $this->db->join('santri','santri.id_santri = peminjaman.id_santri');
+            $this->db->join('petugas','petugas.id_petugas = peminjaman.id_petugas');
+            $query = $this->db->get();
+            return $query;
+        }
     } 
 ?>

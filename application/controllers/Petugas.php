@@ -28,14 +28,14 @@ class Petugas extends CI_Controller {
 
 	public function proses_tambah()
 	{
-		$nama 				= $this->input->post('nama');
+		$nama_petugas 		= $this->input->post('nama_petugas');
 		$alamat 			= $this->input->post('alamat');
 		$jenis_kelamin 		= $this->input->post('jenis_kelamin');
 		$no_hp				= $this->input->post('no_hp');
 		$email				= $this->input->post('email');
 
 		$data = array(
-			'nama' 					=> $nama,
+			'nama_petugas' 			=> $nama_petugas,
 			'alamat' 				=> $alamat,
 			'jenis_kelamin' 		=> $jenis_kelamin,
 			'no_hp'					=> $no_hp,
@@ -60,14 +60,14 @@ class Petugas extends CI_Controller {
 
 	public function proses_ubah($id)
 	{
-		$nama 				= $this->input->post('nama');
+		$nama_petugas 		= $this->input->post('nama_petugas');
 		$alamat 			= $this->input->post('alamat');
 		$jenis_kelamin 		= $this->input->post('jenis_kelamin');
 		$no_hp				= $this->input->post('no_hp');
 		$email				= $this->input->post('email');
 
 		$data = array(
-			'nama' 					=> $nama,
+			'nama_petugas' 			=> $nama_petugas,
 			'alamat' 				=> $alamat,
 			'jenis_kelamin' 		=> $jenis_kelamin,
 			'no_hp'					=> $no_hp,

@@ -32,8 +32,15 @@
                                         <td><?= $b->bahasa ?></td>
                                         <td>
                                             <div class="row d-flex justify-content-center">
-                                                <div>
+                                                <div style="margin-right:5px;">
                                                     <a href="<?= base_url("buku/detail_buku/" . $b->id_buku)?>">
+                                                        <button type="button" class="btn btn-success btn-rounded btn-icon">
+                                                            <i class="typcn typcn-book"></i>
+                                                        </button>
+                                                     </a>
+                                                </div>
+                                                <div>
+                                                    <a href="<?= base_url("peminjaman/tambah_peminjaman?id=" . $b->id_buku)?>">
                                                         <button type="button" class="btn btn-success btn-rounded btn-icon">
                                                             <i class="typcn typcn-book"></i>
                                                         </button>

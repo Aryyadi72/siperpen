@@ -25,7 +25,7 @@
                                     ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $p->nama ?></td>
+                                        <td><?= $p->nama_petugas ?></td>
                                         <td><?= $p->alamat ?></td>
                                         <td><?= $p->no_hp ?></td>
                                         <td><?= $p->email ?></td>

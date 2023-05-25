@@ -13,7 +13,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Nama</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama" name="nama" value="<?= $petugas['nama']; ?>">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama" name="nama_petugas" value="<?= $petugas['nama_petugas']; ?>">
                                 </div>
 
                                 <div class="form-group">

@@ -53,7 +53,9 @@
                                     <label for="exampleSelectGender">Asal Buku</label>
                                         <select class="form-control" id="exampleSelectGender" name="id_asal_buku">
                                             <option selected disabled>Pilih Asal Buku</option>
-                                            <option value="1">Perpus Daerah</option>
+                                            <?php foreach($asal as $a) { ?>
+                                            <option value="<?= $a->id_asal_buku; ?>"><?= $a->asal_buku; ?></option>
+                                            <?php } ?>
                                         </select>
                                 </div>
 
@@ -61,7 +63,9 @@
                                     <label for="exampleSelectGender">Jenis Buku</label>
                                         <select class="form-control" id="exampleSelectGender" name="id_jenis_buku">
                                             <option selected disabled>Pilih Jenis Buku</option>
-                                            <option value="1">Buku Bacaan</option>
+                                            <?php foreach($jenis as $j) { ?>
+                                            <option value="<?= $j->id_jenis_buku; ?>"><?= $j->jenis; ?></option>
+                                            <?php } ?>
                                         </select>
                                 </div>
                                 

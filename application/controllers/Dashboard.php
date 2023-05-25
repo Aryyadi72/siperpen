@@ -5,7 +5,8 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('petugas/templates/header');
+		$title['title'] = "Dashboard - SIPERPEN";
+		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
 		$this->load->view('petugas/templates/sidebar');
 		$this->load->view('dashboard');
@@ -14,7 +15,8 @@ class Dashboard extends CI_Controller {
 
 	public function dash_santri()
 	{
-		$this->load->view('santri/templates/header');
+		$title['title'] = "Dashboard - SIPERPEN";
+		$this->load->view('santri/templates/header', $title);
 		$this->load->view('santri/templates/navbar');
 		$this->load->view('santri/templates/sidebar');
 		$this->load->view('santri/dashboard/dashboard_santri');

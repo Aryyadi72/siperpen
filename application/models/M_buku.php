@@ -25,5 +25,40 @@
             $query = $this->db->get();
             return $query;
         }
+
+        // Jenis Buku
+
+        public function jenis_buku()
+        {
+            return $this->db->query('SELECT * FROM jenis_buku');
+        }
+
+        public function jenis_byid($id)
+        {
+            return $this->db->get_where('jenis_buku', ['id_jenis_buku' => $id])->row_array();
+        }
+
+        public function hapus_jenis($id_jenis_buku)
+        {
+            $this->db->where('id_jenis_buku', $id_jenis_buku);
+            return $this->db->delete('jenis_buku');
+        }
+
+        // Asal Buku
+        public function tampil_asal()
+        {
+            return $this->db->query('SELECT * FROM asal_buku');
+        }
+
+        public function asal_byid($id)
+        {
+            return $this->db->get_where('asal_buku', ['id_asal_buku' => $id])->row_array();
+        }
+
+        public function hapus_asal($id_asal_buku)
+        {
+            $this->db->where('id_asal_buku', $id_asal_buku);
+            return $this->db->delete('asal_buku');
+        }
     } 
 ?>

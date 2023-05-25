@@ -64,10 +64,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('buku')?>">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Buku</span>
+            <a class="nav-link" data-toggle="collapse" href="#buku" aria-expanded="false" aria-controls="buku">
+              <i class="typcn typcn-user-add-outline menu-icon"></i>
+              <span class="menu-title">Data Buku</span>
+              <i class="typcn typcn-chevron-right menu-arrow"></i>
             </a>
+            <div class="collapse" id="buku">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?= base_url('buku/tampil_jenis')?>">Jenis Buku</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= base_url('buku/tampil_asal')?>">Asal Buku</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= base_url('buku')?>">Buku</a></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

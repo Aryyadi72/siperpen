@@ -18,11 +18,13 @@ class Buku extends CI_Controller {
 	public function tambah()
 	{
 		$title['title'] = "Data Buku - SIPERPEN";
+		$data['jenis'] = $this->M_buku->jenis_buku()->result();
+		$data['asal'] = $this->M_buku->tampil_asal()->result();
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
 		$this->load->view('petugas/templates/sidebar');
-		$this->load->view('petugas/buku/v_tambah_buku');
+		$this->load->view('petugas/buku/v_tambah_buku', $data);
 		$this->load->view('petugas/templates/footer');
 	}
 
@@ -146,4 +148,142 @@ class Buku extends CI_Controller {
 		$this->load->view('petugas/buku/v_detail_buku', $data);
 		$this->load->view('santri/templates/footer');
 	}
+
+	// Jenis Buku
+
+	public function tampil_jenis()
+	{
+		$data['jenis'] = $this->M_buku->jenis_buku()->result();
+		$title['title'] = "Jenis Buku - SIPERPEN";
+
+		$this->load->view('petugas/templates/header', $title);
+		$this->load->view('petugas/templates/navbar');
+		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/jenis_buku/v_jenis', $data);
+		$this->load->view('petugas/templates/footer');
+	}
+
+	public function tambah_jenis()
+	{
+		$title['title'] = "Tambah Jenis Buku - SIPERPEN";
+
+		$this->load->view('petugas/templates/header', $title);
+		$this->load->view('petugas/templates/navbar');
+		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/jenis_buku/v_tambah_jenis');
+		$this->load->view('petugas/templates/footer');
+	}
+
+	public function proses_tambah_jenis()
+	{
+		$jenis = $this->input->post('jenis');
+
+		$data = array(
+			'jenis' => $jenis,
+        );
+        
+		$this->db->insert('jenis_buku', $data);
+        redirect('buku/tampil_jenis');
+	}
+
+	public function edit_jenis($id)
+	{
+		$data['jenis'] 	= $this->M_buku->jenis_byid($id);
+		$title['title'] = "Ubah Jenis Buku - SPASI";
+
+		$this->load->view('petugas/templates/header', $title);
+		$this->load->view('petugas/templates/navbar');
+		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/jenis_buku/v_ubah_jenis', $data);
+		$this->load->view('petugas/templates/footer');
+	}
+
+	public function proses_ubah_jenis($id)
+	{
+		$jenis = $this->input->post('jenis');
+
+		$data = array(
+			'jenis' => $jenis,
+        );
+        
+		$this->db->where('id_jenis_buku', $id);
+		$this->db->update('jenis_buku', $data);
+        redirect('buku/tampil_jenis');
+	}
+
+	public function hapus_jenis($id_jenis_buku)
+    {
+		$this->M_buku->hapus_jenis($id_jenis_buku);
+        // $this->session->set_flashdata('sukses', 'Data Dengan ID ' . $id_user . ' berhasil dihapus.');
+        redirect(base_url('buku/tampil_jenis'));
+    }
+
+	// Asal Buku
+
+	public function tampil_asal()
+	{
+		$data['asal'] = $this->M_buku->tampil_asal()->result();
+		$title['title'] = "Asal Buku - SIPERPEN";
+
+		$this->load->view('petugas/templates/header', $title);
+		$this->load->view('petugas/templates/navbar');
+		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/asal_buku/v_asal', $data);
+		$this->load->view('petugas/templates/footer');
+	}
+
+	public function tambah_asal()
+	{
+		$title['title'] = "Tambah Asal Buku - SIPERPEN";
+
+		$this->load->view('petugas/templates/header', $title);
+		$this->load->view('petugas/templates/navbar');
+		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/asal_buku/v_tambah_asal');
+		$this->load->view('petugas/templates/footer');
+	}
+
+	public function proses_tambah_asal()
+	{
+		$asal_buku = $this->input->post('asal_buku');
+
+		$data = array(
+			'asal_buku' => $asal_buku,
+        );
+        
+		$this->db->insert('asal_buku', $data);
+        redirect('buku/tampil_asal');
+	}
+
+	public function edit_asal($id)
+	{
+		$data['asal'] 	= $this->M_buku->asal_byid($id);
+		$title['title'] = "Ubah Asal Buku - SPASI";
+
+		$this->load->view('petugas/templates/header', $title);
+		$this->load->view('petugas/templates/navbar');
+		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/asal_buku/v_ubah_asal', $data);
+		$this->load->view('petugas/templates/footer');
+	}
+
+	public function proses_ubah_asal($id)
+	{
+		$asal_buku = $this->input->post('asal_buku');
+
+		$data = array(
+			'asal_buku' => $asal_buku,
+        );
+        
+		$this->db->where('id_asal_buku', $id);
+		$this->db->update('asal_buku', $data);
+        redirect('buku/tampil_asal');
+	}
+
+	public function hapus_asal($id_asal_buku)
+    {
+		$this->M_buku->hapus_asal($id_asal_buku);
+        // $this->session->set_flashdata('sukses', 'Data Dengan ID ' . $id_user . ' berhasil dihapus.');
+        redirect(base_url('buku/tampil_asal'));
+    }
 }

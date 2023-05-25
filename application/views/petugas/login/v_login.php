@@ -15,7 +15,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= base_url()?>./assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?= base_url()?>./assets/images/favicon.png" />
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/library-126.svg" />
 </head>
 
 <body>

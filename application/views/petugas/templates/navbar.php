@@ -124,7 +124,7 @@
                 <i class="typcn typcn-cog text-primary"></i>
                 Settings
                 </a>
-                <a class="dropdown-item" href="<?= base_url('landing')?>">
+                <a class="dropdown-item" href="<?= base_url('login/logout_petugas')?>">
                 <i class="typcn typcn-power text-primary"></i>
                 Logout
                 </a>

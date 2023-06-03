@@ -20,7 +20,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleSelectGender">Jenis Kelamun</label>
+                                    <label for="exampleSelectGender">Jenis Kelamin</label>
                                         <select class="form-control" id="exampleSelectGender" name="jenis_kelamin">
                                             <option selected disabled>Pilih Jenis Kelamin</option>
                                             <option value="Pria">Pria</option>
@@ -36,6 +36,28 @@
                                 <div class="form-group">
                                     <label for="exampleInputName1">Email</label>
                                         <input type="text" class="form-control" id="exampleInputName1" placeholder="Email" name="email">
+                                </div>
+
+                                <h4 class="card-title">Tambah Akun Petugas</h4>
+                                <hr>
+
+                                <div class="form-group">
+                                    <label for="exampleSelectGender">Level</label>
+                                        <select class="form-control" id="exampleSelectGender" name="id_level">
+                                            <option selected disabled>Pilih Level</option>
+                                            <option value="1">Kepala Perpus</option>
+                                            <option value="2">Petugas</option>
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Username</label>
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Username" name="username">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Password</label>
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Password" name="password">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>

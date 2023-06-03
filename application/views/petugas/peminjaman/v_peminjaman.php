@@ -42,6 +42,13 @@
                                                         </button>
                                                     </a>
                                                 </div>
+                                                <div style="margin-right:5px;">
+                                                    <a href="<?= base_url("pengembalian/tambah_pengembalian?id=" . $p->id_peminjaman)?>">
+                                                        <button type="button" class="btn btn-success btn-rounded btn-icon">
+                                                            <i class="typcn typcn-input-checked"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

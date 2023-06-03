@@ -16,5 +16,13 @@
         {
             return $this->db->get_where('petugas', ['id_petugas' => $id])->row_array();
         }
+
+        public function getLoginPetugasById($id_petugas)
+        {
+            $this->db->where('id_petugas', $id_petugas);
+            $query = $this->db->get('login_petugas');
+            
+            return $query->row_array();
+        }
     } 
 ?>

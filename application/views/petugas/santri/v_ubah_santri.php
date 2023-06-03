@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Ubah Data Santri</h4>
                             <hr>
-                            <form class="forms-sample" action="<?php echo base_url('santri/proses_ubah/'. $santri['id_santri']); ?>" method="post" role="form">
+                            <form class="forms-sample" action="<?php echo base_url('santri/proses_ubah/'. $santri['id_santri']); ?>" method="post" enctype="multipart/form-data" role="form">
 
                             <input type="hidden"  name="id_santri" class="form-control" id="exampleInputName1" value="<?= $santri['id_santri']; ?>">
 
@@ -68,6 +68,12 @@
                                 <div class="form-group">
                                     <label for="exampleInputName1">Tanggal Daftar</label>
                                         <input type="date" class="form-control" id="exampleInputName1" placeholder="Tanggal Daftar" name="tanggal_daftar" value="<?= $santri['tanggal_daftar']; ?>">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Upload Gambar</label>
+                                        <input class="form-control" type="file" id="formFile" name="userfile" accept="/image/*"><br>
+                                        <img src="<?= base_url()?>./assets/upload/santri/<?= $santri['foto_santri'] ?>" name="userfile" style="width:100%;max-width:100px">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>

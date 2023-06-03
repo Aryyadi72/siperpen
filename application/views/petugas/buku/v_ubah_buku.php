@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Ubah Data Buku</h4>
                             <hr>
-                            <form class="forms-sample" action="<?php echo base_url('buku/proses_ubah/' . $buku['id_buku']); ?>" method="post" role="form">
+                            <form class="forms-sample" action="<?php echo base_url('buku/proses_ubah/' . $buku['id_buku']); ?>" method="post" enctype="multipart/form-data" role="form">
 
                             <input type="hidden"  name="id_buku" class="form-control" id="exampleInputName1" value="<?= $buku['id_buku']; ?>">
 
@@ -47,8 +47,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Keterangan</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" name="keterangan" value="<?= $buku['keterangan']; ?>">
+                                    <label for="exampleInputName1">Deskripsi</label>
+                                        <input type="text" class="form-control" id="exampleInputName1" name="deskripsi" value="<?= $buku['deskripsi']; ?>">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Upload Gambar</label>
+                                        <input class="form-control" type="file" id="formFile" name="userfile" accept="/image/*"><br>
+                                        <img src="<?= base_url()?>./assets/upload/buku/<?= $buku['foto_buku'] ?>" name="userfile" style="width:100%;max-width:100px">
                                 </div>
 
                                 <div class="form-group">

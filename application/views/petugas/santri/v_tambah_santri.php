@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Tambah Data Santri</h4>
                             <hr>
-                            <form class="forms-sample" action="<?php echo base_url('santri/proses_tambah'); ?>" method="post" role="form">
+                            <form class="forms-sample" action="<?php echo base_url('santri/proses_tambah'); ?>" method="post" enctype="multipart/form-data" role="form">
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">No Anggota</label>
@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleSelectGender">Jenis Kelamun</label>
+                                    <label for="exampleSelectGender">Jenis Kelamin</label>
                                         <select class="form-control" id="exampleSelectGender" name="jenis_kelamin">
                                             <option selected disabled>Pilih Jenis Kelamin</option>
                                             <option value="Laki-laki">Laki-laki</option>
@@ -66,6 +66,26 @@
                                 <div class="form-group">
                                     <label for="exampleInputName1">Tanggal Daftar</label>
                                         <input type="date" class="form-control" id="exampleInputName1" placeholder="Tanggal Daftar" name="tanggal_daftar">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Upload Gambar</label>
+                                        <input class="form-control" type="file" id="formFile" name="userfile" accept="/image/*">
+                                </div>
+
+                                <h4 class="card-title">Tambah Akun Santri</h4>
+                                <hr>
+
+                                <input type="hidden" class="form-control" id="exampleInputName1" placeholder="No Anggota" name="id_level" value="3">
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Username</label>
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Username" name="username">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Password</label>
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Password" name="password">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>

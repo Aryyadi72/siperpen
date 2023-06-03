@@ -5,31 +5,47 @@ class Buku extends CI_Controller {
 
 	public function index()
 	{
-		$data['buku'] = $this->M_buku->tampil()->result();
-		$title['title'] = "Data Buku - SIPERPEN";
+		$data['buku'] 		= $this->M_buku->tampil()->result();
+		$title['title'] 	= "Data Buku - SIPERPEN";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/buku/v_buku', $data);
 		$this->load->view('petugas/templates/footer');
 	}
 
 	public function tambah()
 	{
-		$title['title'] = "Data Buku - SIPERPEN";
-		$data['jenis'] = $this->M_buku->jenis_buku()->result();
-		$data['asal'] = $this->M_buku->tampil_asal()->result();
+		$title['title'] 	= "Data Buku - SIPERPEN";
+		$data['jenis'] 		= $this->M_buku->jenis_buku()->result();
+		$data['asal'] 		= $this->M_buku->tampil_asal()->result();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/buku/v_tambah_buku', $data);
 		$this->load->view('petugas/templates/footer');
 	}
 
 	public function proses_tambah()
 	{
+		$config['upload_path']          = './assets/upload/buku';
+        $config['allowed_types']        = 'gif|jpg|png|PNG';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('userfile')) {
+            echo "Gagal Tambah";
+        } else {
+
+		$foto_buku 				= $this->upload->data();
+        $foto_buku 				= $foto_buku['file_name'];
 		$no_invent 				= $this->input->post('no_invent');
 		$tanggal_ditambahkan 	= $this->input->post('tanggal_ditambahkan');
 		$pengarang 				= $this->input->post('pengarang');
@@ -54,29 +70,43 @@ class Buku extends CI_Controller {
 			'jumlah_buku'			=> $jumlah_buku,
 			'penerbit' 				=> $penerbit,
 			'penerbit'				=> $penerbit,
-			'keterangan'			=> $keterangan
+			'keterangan'			=> $keterangan,
+			'foto_buku'				=> $foto_buku
         );
         
-		$this->db->insert('buku', $data);
-        redirect('buku');
+			$this->db->insert('buku', $data);
+        	redirect('buku');
+		}
 	}
 
 	public function edit($id)
 	{
-		$data['buku'] 	= $this->M_buku->byid($id);
+		$data['buku'] 		= $this->M_buku->byid($id);
 		$title['title'] 	= "Ubah Buku - SPASI";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/buku/v_ubah_buku', $data);
 		$this->load->view('petugas/templates/footer');
 	}
 
 	public function proses_ubah($id)
 	{
-		// $id 					= $this->input->post('id_buku');
-		$no_invent 				= $this->input->post('no_invent');
+		$id 					= $this->input->post('id_buku');
+
+		$config['upload_path']          = './assets/upload/buku';
+        $config['allowed_types']        = 'gif|jpg|png|PNG|jpeg';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+
+        $this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('userfile')) {
+
+        $no_invent 				= $this->input->post('no_invent');
 		$pengarang 				= $this->input->post('pengarang');
 		$judul 					= $this->input->post('judul');
 		$id_asal_buku 			= $this->input->post('id_asal_buku');
@@ -104,16 +134,52 @@ class Buku extends CI_Controller {
 		$this->db->where('id_buku', $id);
 		$this->db->update('buku', $data);
         redirect('buku');
+
+        } else {
+
+		$foto_buku 				= $this->upload->data();
+        $foto_buku 				= $foto_buku['file_name'];
+		$no_invent 				= $this->input->post('no_invent');
+		$pengarang 				= $this->input->post('pengarang');
+		$judul 					= $this->input->post('judul');
+		$id_asal_buku 			= $this->input->post('id_asal_buku');
+		$id_jenis_buku 			= $this->input->post('id_jenis_buku');
+		$bahasa					= $this->input->post('bahasa');
+		$harga_satuan			= $this->input->post('harga_satuan');
+		$jumlah_buku			= $this->input->post('jumlah_buku');
+		$penerbit				= $this->input->post('penerbit');
+		$keterangan				= $this->input->post('keterangan');
+
+		$data = array(
+			'no_invent' 			=> $no_invent,
+			'pengarang'				=> $pengarang,
+			'judul' 				=> $judul,
+			'id_asal_buku'			=> $id_asal_buku,
+			'id_jenis_buku' 		=> $id_jenis_buku,
+			'bahasa'				=> $bahasa,
+			'harga_satuan' 			=> $harga_satuan,
+			'jumlah_buku'			=> $jumlah_buku,
+			'penerbit' 				=> $penerbit,
+			'penerbit'				=> $penerbit,
+			'keterangan'			=> $keterangan,
+			'foto_buku' 			=> $foto_buku,
+        );
+        
+		$this->db->where('id_buku', $id);
+		$this->db->update('buku', $data);
+        redirect('buku');
 	}
+}
 
 	public function detail($id)
 	{
-		$data['buku'] 	= $this->M_buku->byid($id);
+		$data['buku'] 		= $this->M_buku->byid($id);
 		$title['title'] 	= "Ubah Buku - SPASI";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('petugas/templates/header', $data);
+		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/buku/v_detail_buku', $data);
 		$this->load->view('petugas/templates/footer');
 	}
@@ -127,7 +193,7 @@ class Buku extends CI_Controller {
 	
 	public function buku_santri()
 	{
-		$data['buku'] = $this->M_buku->tampil_jenis()->result();
+		$data['buku'] 	= $this->M_buku->tampil_jenis()->result();
 		$title['title'] = "Data Buku - SIPERPEN";
 
 		$this->load->view('santri/templates/header', $title);
@@ -140,7 +206,7 @@ class Buku extends CI_Controller {
 	public function detail_buku($id)
 	{
 		$data['buku'] 	= $this->M_buku->byid($id);
-		$title['title'] 	= "Detail Buku - SPASI";
+		$title['title'] = "Detail Buku - SPASI";
 
 		$this->load->view('santri/templates/header', $data);
 		$this->load->view('santri/templates/navbar');
@@ -153,23 +219,25 @@ class Buku extends CI_Controller {
 
 	public function tampil_jenis()
 	{
-		$data['jenis'] = $this->M_buku->jenis_buku()->result();
+		$data['jenis'] 	= $this->M_buku->jenis_buku()->result();
 		$title['title'] = "Jenis Buku - SIPERPEN";
+		$data['id_level'] = $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/jenis_buku/v_jenis', $data);
 		$this->load->view('petugas/templates/footer');
 	}
 
 	public function tambah_jenis()
 	{
-		$title['title'] = "Tambah Jenis Buku - SIPERPEN";
+		$title['title'] 	= "Tambah Jenis Buku - SIPERPEN";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/jenis_buku/v_tambah_jenis');
 		$this->load->view('petugas/templates/footer');
 	}
@@ -188,12 +256,13 @@ class Buku extends CI_Controller {
 
 	public function edit_jenis($id)
 	{
-		$data['jenis'] 	= $this->M_buku->jenis_byid($id);
-		$title['title'] = "Ubah Jenis Buku - SPASI";
+		$data['jenis'] 		= $this->M_buku->jenis_byid($id);
+		$title['title'] 	= "Ubah Jenis Buku - SPASI";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/jenis_buku/v_ubah_jenis', $data);
 		$this->load->view('petugas/templates/footer');
 	}
@@ -222,23 +291,25 @@ class Buku extends CI_Controller {
 
 	public function tampil_asal()
 	{
-		$data['asal'] = $this->M_buku->tampil_asal()->result();
-		$title['title'] = "Asal Buku - SIPERPEN";
+		$data['asal'] 		= $this->M_buku->tampil_asal()->result();
+		$title['title'] 	= "Asal Buku - SIPERPEN";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/asal_buku/v_asal', $data);
 		$this->load->view('petugas/templates/footer');
 	}
 
 	public function tambah_asal()
 	{
-		$title['title'] = "Tambah Asal Buku - SIPERPEN";
+		$title['title'] 	= "Tambah Asal Buku - SIPERPEN";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/asal_buku/v_tambah_asal');
 		$this->load->view('petugas/templates/footer');
 	}
@@ -257,12 +328,13 @@ class Buku extends CI_Controller {
 
 	public function edit_asal($id)
 	{
-		$data['asal'] 	= $this->M_buku->asal_byid($id);
-		$title['title'] = "Ubah Asal Buku - SPASI";
+		$data['asal'] 		= $this->M_buku->asal_byid($id);
+		$title['title'] 	= "Ubah Asal Buku - SPASI";
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
-		$this->load->view('petugas/templates/sidebar');
+		$this->load->view('petugas/templates/sidebar', $data);
 		$this->load->view('petugas/asal_buku/v_ubah_asal', $data);
 		$this->load->view('petugas/templates/footer');
 	}

@@ -33,19 +33,21 @@
                             <h4>Selamat Datang di SIPERPEN</h4>
                             <h6 class="font-weight-light">Halaman Login Santri</h6>
 
-                                <form class="pt-3">
+                                <form class="pt-3" method="POST" action="<?= site_url('login/auth_santri') ?>">
 
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                                        <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="username">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                        <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
                                     </div>
 
                                     <div class="mt-3">
-                                        <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="<?= base_url('dashboard/dash_santri')?>">SIGN IN</a>
+                                        <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN IN</button>
                                     </div>
+
+                                </form>
 
                                     <div class="mt-3">
                                         <a class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn" href="<?= base_url('login')?>">SIGN IN ADMIN</a>
@@ -54,8 +56,6 @@
                                     <div class="text-center mt-4 font-weight-light">
                                         Belum memiliki akun? <a href="register.html" class="text-primary">Daftar</a>
                                     </div>
-
-                                </form>
 
                         </div>
                     </div>

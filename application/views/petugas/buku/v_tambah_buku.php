@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Tambah Data Buku</h4>
                             <hr>
-                            <form class="forms-sample" action="<?php echo base_url('buku/proses_tambah'); ?>" method="post" role="form">
+                            <form class="forms-sample" action="<?php echo base_url('buku/proses_tambah'); ?>" method="post" enctype="multipart/form-data" role="form">
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">No Invent</label>
@@ -45,8 +45,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Keterangan</label>
-                                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="keterangan"></textarea>
+                                    <label for="exampleInputName1">Deskripsi</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="deskripsi"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Upload Gambar</label>
+                                        <input class="form-control" type="file" id="formFile" name="userfile" accept="/image/*">
                                 </div>
 
                                 <div class="form-group">

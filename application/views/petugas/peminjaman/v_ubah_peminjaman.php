@@ -9,21 +9,15 @@
                             <hr>
                             <form class="forms-sample" action="<?php echo base_url('peminjaman/proses_ubah/' . $peminjaman['id_peminjaman']); ?>" method="post" role="form">
 
-                            <input type="hidden" class="form-control" id="exampleInputName1" name="id_buku" value="<?= $peminjaman['id_peminjaman'] ?>">
+                                        <input type="hidden" class="form-control" id="exampleInputName1" name="id_buku" value="<?= $peminjaman['id_peminjaman'] ?>">
 
-                                <div class="form-group">
-                                    <label for="exampleInputName1">Buku</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Buku" name="id_buku" value="<?= $peminjaman['id_buku'] ?>">
-                                </div>
+                                        <input type="hidden" class="form-control" id="exampleInputName1" name="id_buku" value="<?= $peminjaman['id_buku'] ?>">
 
-                                <div class="form-group">
-                                    <label for="exampleInputName1">Santri</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Santri" name="id_santri" value="<?= $peminjaman['id_santri'] ?>">
-                                </div>
+                                        <input type="hidden" class="form-control" id="exampleInputName1" name="id_santri" value="<?= $peminjaman['id_santri'] ?>">
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Petugas</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Petugas" name="id_petugas" value="<?= $peminjaman['id_petugas'] ?>">
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Petugas" name="id_petugas" value="<?= $id_petugas ?>">
                                 </div>
 
                                 <div class="form-group">
@@ -38,7 +32,10 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputName1">Status</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Status" name="status" value="<?= $peminjaman['status'] ?>">
+                                        <select class="form-control" id="exampleSelectGender" name="status">
+                                            <option value="pengajuan" <?php if ($peminjaman['status'] == "pengajuan") echo "selected"; ?>>Pengajuan</option>
+                                            <option value="diterima" <?php if ($peminjaman['status'] == "diterima") echo "selected"; ?>>Diterima</option>
+                                        </select>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>

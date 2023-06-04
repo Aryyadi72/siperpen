@@ -26,7 +26,7 @@ class MY_Email extends CI_Email {
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'dlcindonesia07@gmail.com';
-            $mail->Password = 'bwnm  mslq yaes sybe';
+            $mail->Password = '';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
             

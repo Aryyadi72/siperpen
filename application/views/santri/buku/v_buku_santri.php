@@ -37,14 +37,14 @@
                                                         <button type="button" class="btn btn-success btn-rounded btn-icon">
                                                             <i class="typcn typcn-book"></i>
                                                         </button>
-                                                     </a>
+                                                    </a>
                                                 </div>
                                                 <div>
-                                                    <a href="<?= base_url("peminjaman/tambah_peminjaman?id=" . $b->id_buku)?>">
+                                                    <a href="<?= base_url("peminjaman/proses_tambah?id=" . $b->id_buku)?>">
                                                         <button type="button" class="btn btn-success btn-rounded btn-icon">
                                                             <i class="typcn typcn-book"></i>
                                                         </button>
-                                                     </a>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>

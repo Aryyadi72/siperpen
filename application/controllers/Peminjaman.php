@@ -29,19 +29,18 @@ class Peminjaman extends CI_Controller {
 
 	public function proses_tambah()
 	{
-		$id_buku 					= $this->input->post('id_buku');
-		$id_santri  				= $this->input->post('id_santri');
-		$id_petugas  				= $this->input->post('id_petugas');
-		$tanggal_peminjaman			= $this->input->post('tanggal_peminjaman');
+		$id_buku 					= $this->input->get('id');
+		$id_santri 					= $this->session->userdata('id_santri');
+		$id_petugas  				= $this->input->post('4');
 		$tanggal_wajib_pengembalian	= $this->input->post('tanggal_wajib_pengembalian');
-		$status						= $this->input->post('status');
+		$status						= 'Pengajuan';
 
 		$data = array(
 			'id_buku' 						=> $id_buku,
 			'id_santri' 					=> $id_santri,
 			'id_petugas' 					=> $id_petugas,
 			'tanggal_peminjaman'			=> date('Y-m-d H:i:s'),
-			'tanggal_wajib_pengembalian'	=> $tanggal_wajib_pengembalian,
+			'tanggal_wajib_pengembalian'	=> date('Y-m-d H:i:s'),
 			'status'						=> $status,
         );
         
@@ -111,4 +110,44 @@ class Peminjaman extends CI_Controller {
 
         redirect('peminjaman');
 	}
+
+	public function kirim()
+	{
+        if (isset($_POST['submit'])) {
+
+			$data['peminjaman'] = $this->M_peminjaman->show_data()->result();
+			$email  			= $this->input->post('email');
+
+
+            $mail = new PHPMailer(true);
+
+             // Pengaturan SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'dlcindonesia07@gmail.com';
+            $mail->Password = '';
+            $mail->Port = 587;
+
+            $mail->setFrom('dlcindonesia07@gmail.com', 'Petugas');
+            $mail->addAddress($email, 'Joe User');     
+            // $mail->addAddress('ellen@example.com');               
+            // $mail->addReplyTo('info@example.com', 'Information');
+
+            //Content
+            $mail->isHTML(true);                                  
+            $mail->Subject = 'Here is the subject';
+            $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            if($mail->send()) {
+                echo 'Message has been sent';
+            } else {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
+
+        } else {
+            echo "Tekan dulu tombolnya";
+        }
+    }
 }

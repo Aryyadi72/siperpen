@@ -49,6 +49,13 @@
                                                         </button>
                                                     </a>
                                                 </div>
+                                                <div style="margin-right:5px;">
+                                                    <a href="<?= base_url("kirim")?>">
+                                                        <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                                                            <i class="typcn typcn-mail"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

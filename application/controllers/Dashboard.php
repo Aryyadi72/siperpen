@@ -7,10 +7,15 @@ class Dashboard extends CI_Controller {
 	{
 		$data['id_level'] = $this->session->userdata('id_level');
 		$title['title'] = "Dashboard - SIPERPEN";
+		$dataCount['total'] = $this->M_buku->getTotalBuku();
+		$dataCount['totalpetugas'] = $this->M_buku->getTotalPetugas();
+		$dataCount['totalsantri'] = $this->M_buku->getTotalSantri();
+		$dataCount['totalpeminjaman'] = $this->M_buku->getTotalPeminjaman();
+		$dataCount['totalpengembalian'] = $this->M_buku->getTotalPengembalian();
 		$this->load->view('petugas/templates/header', $title);
 		$this->load->view('petugas/templates/navbar');
 		$this->load->view('petugas/templates/sidebar', $data);
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $dataCount);
 		$this->load->view('petugas/templates/footer');
 	}
 

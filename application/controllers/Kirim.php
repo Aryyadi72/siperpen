@@ -25,7 +25,7 @@ class Kirim extends CI_Controller {
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'dlcindonesia07@gmail.com';
-            $mail->Password = '';
+            $mail->Password = 'bwnm  mslq yaes sybe';
             $mail->Port = 587;
 
             $mail->setFrom('dlcindonesia07@gmail.com', 'Petugas');

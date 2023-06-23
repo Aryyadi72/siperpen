@@ -60,5 +60,35 @@
             $this->db->where('id_asal_buku', $id_asal_buku);
             return $this->db->delete('asal_buku');
         }
+
+        public function getTotalBuku()
+        {
+            $query = $this->db->get('buku');
+            return $query->num_rows();
+        }
+
+        public function getTotalPetugas()
+        {
+            $query = $this->db->get('petugas');
+            return $query->num_rows();
+        }
+
+        public function getTotalSantri()
+        {
+            $query = $this->db->get('santri');
+            return $query->num_rows();
+        }
+
+        public function getTotalPengembalian()
+        {
+            $query = $this->db->get('pengembalian');
+            return $query->num_rows();
+        }
+
+        public function getTotalPeminjaman()
+        {
+            $query = $this->db->get('peminjaman');
+            return $query->num_rows();
+        }
     } 
 ?>
